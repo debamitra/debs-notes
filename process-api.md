@@ -14,11 +14,12 @@
 9. What are process groups?
 10. What are interrupts?
 
-11. **How does a file descriptor point to a particular process?**
+11. **What is a file descriptor?**
+    - a non-negative interger that uniquely identifies an opened file or I/O resource within a process
     - Every process has its own file descriptors table. Each file descriptor entry in the table points to a file handle that represents an open file or I/O resource, e.g., the standard output, a pipe, etc.
     ![File Descriptor Image](https://github.com/debamitra/debs-notes/assets/2363934/51415b79-863c-4e40-a763-d0a78e576db9)
 
-12. **How does the dup2() system call work?**
+13. **How does the dup2() system call work?**
     - Example: `dup2(pipefd[1], STDOUT_FILENO);`
 
     **Before the Duplication:**
