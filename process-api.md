@@ -13,3 +13,42 @@
 8. What are signals ?
 9. What are process groups?
 10. What are interrupts?
+
+11. **How does a file descriptor point to a particular process?**
+    - Every process has its own file descriptors table. Each file descriptor entry in the table points to a file handle that represents an open file or I/O resource, e.g., the standard output, a pipe, etc.
+    ![File Descriptor Image](https://github.com/debamitra/debs-notes/assets/2363934/51415b79-863c-4e40-a763-d0a78e576db9)
+
+12. **How does the dup2() system call work?**
+    - Example: `dup2(pipefd[1], STDOUT_FILENO);`
+
+    **Before the Duplication:**
+    - `STDOUT_FILENO` points to a file descriptor entry associated with the terminal or console output.
+    - `pipefd[1]` points to a file descriptor entry that is part of the pipe's write mechanism.
+
+    ```
+    File Descriptor Table
+    ----------------------
+    0 -> Standard Input (stdin)
+    1 -> Standard Output (stdout, typically your terminal or console)
+    2 -> Standard Error (stderr)
+    ... (other entries)
+    pipefd[0] -> Read end of a pipe
+    pipefd[1] -> Write end of a pipe
+    ```
+
+    **After the Duplication:**
+    - Both `STDOUT_FILENO` and `pipefd[1]` point to the same entry: the write end of the pipe.
+    - The original entry that `STDOUT_FILENO` pointed to (usually the terminal or console output) is no longer linked to `STDOUT_FILENO`. It has been closed as part of the dup2 operation if it was open.
+
+    ```
+    File Descriptor Table
+    ----------------------
+    0 -> Standard Input (stdin)
+    1 -> Write end of a pipe (same as pipefd[1])
+    2 -> Standard Error (stderr)
+    ... (other entries)
+    pipefd[0] -> Read end of a pipe
+    pipefd[1] -> Write end of a pipe (same as STDOUT_FILENO)
+    ```
+
+
