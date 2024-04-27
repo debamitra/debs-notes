@@ -6,7 +6,7 @@
    - communication
    - device manipulation
   
-4. fork() creates exact copy if calling rocess which continues by returning from fork() system call.
+4. fork() creates exact copy of calling process which continues by returning from fork() system call.
 5. exec() loads code from executable and overwrites its current code segment with it
 6. What is a code segment?
 7. How do pipes work in unix?
