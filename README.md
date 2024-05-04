@@ -1,4 +1,4 @@
-# debs-notes
+# [debs-notes](https://debamitra.github.io/debs-notes/)
 
 [The Process](https://debamitra.github.io/debs-notes/the-process.html)
 
