@@ -6,8 +6,11 @@
    </details>
 3. How does OS decide to run a process? OS Scheduler
 4. What is process control block?
-5. What are the different states, a process can be in?
-6. Process - A program in execution. Can be described by its state namely the contents of its address space, CPU registers,information about I/O.
+   - Two important data structures is 1.the process list ( array of PCBs or list of all processes in system)
+   - 2. the Process Control Block which contains all information about each process. (used for context switches as well)
+     stack pointer, process state, pid, registers values, open files etc.
+6. What are the different states, a process can be in?
+7. Process - A program in execution. Can be described by its state namely the contents of its address space, CPU registers,information about I/O.
    
 ### Process States Diagram
 
