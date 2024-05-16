@@ -1,22 +1,25 @@
 1. How is the PID generated?
-2. What are the system calls used to create a process in UNIX?
-3. What is a system call?
+2. To think - is there a limit to no of processes that can exist concurrently because of the limit in max PID? Possibly limits are more on resources like memory limitations etc.
+3. What are the system calls used to create a process in UNIX?
+4. What is a system call?
    - file management system calls
    - process control
    - communication
    - device manipulation
   
-4. fork() creates exact copy of calling process which continues by returning from fork() system call.
-5. exec() loads code from executable and overwrites its current code segment with it
-6. What is a code segment?
-7. How do pipes work in unix?
-8. What are signals ?
-9. What are process groups?
-10. What are interrupts?
+5. fork() creates exact copy of calling process which continues by returning from fork() system call.
+6. exec() loads code from executable and overwrites its current code segment with it
+7. What is a code segment?
+8. How do pipes work in unix?
+9. What are signals ?
+10. What are process groups?
+11. What are interrupts?
 
-11. **What is a file descriptor?**
+12. **What is a file descriptor?**
     - a non-negative interger that uniquely identifies an opened file or I/O resource within a process
     - Every process has its own file descriptors table. Each file descriptor entry in the table points to a file handle that represents an open file or I/O resource, e.g., the standard output, a pipe, etc.
+    - To think - since file descriptors for all processes point to same stdin, stdout and stderr, what happns when many processes simulteneusly print to stdout. How does it work for stdin? - each terminal or program which starts the process has its own stdin/stdout associated with it. What exactly is stdin/stdout? They are streams, each process has its own set of streams to which it binds to.
+      
     ![File Descriptor Image](https://github.com/debamitra/debs-notes/assets/2363934/51415b79-863c-4e40-a763-d0a78e576db9)
 
 13. **How does the dup2() system call work?**
