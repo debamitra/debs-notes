@@ -1,0 +1,2 @@
+- main challenge of OS, high performance + control over cpu
+- 
