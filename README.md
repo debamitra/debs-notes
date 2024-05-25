@@ -8,3 +8,6 @@
 
 [CPU Scheduling](https://debamitra.github.io/debs-notes/cpu-scheduling.html)
 
+[Memory API](https://debamitra.github.io/debs-notes/memory-api.html)
+
+[Limited Direct Execution](https://debamitra.github.io/debs-notes/limited-direct-execution.html)
