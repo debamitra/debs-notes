@@ -24,45 +24,27 @@
 
    **VPN Calculation**:
    - The remaining bits (32 - 12 = 20 bits) represent the VPN.
-   - With 20 bits we can have how many pages? 2^20 = little more than 1 million
+   - With 20 bits we can have how many pages? 2^20 = 1,048,576 (little more than 1 million pages)
 
-### Number of Translations
 
-1. **Number of Pages (VPNs)**:
-   - A 20-bit VPN means there are 2^20 different pages.
-   - 2^20 = 1,048,576 (roughly a million pages).
-
-### Page Table Size
-
-1. **Page Table Entry (PTE)**:
+4. **Page Table Size**
    - Each entry in the page table needs to store information about one page.
    - Typically, each PTE is 4 bytes (32 bits), which includes the physical frame number and some control bits.
-
-2. **Total Memory for One Page Table**:
    - With a million pages, and each entry being 4 bytes, the total size of the page table is:
-   \[
-   1,048,576 \text{ pages} \times 4 \text{ bytes/page} = 4,194,304 \text{ bytes} \approx 4 \text{ MB}
-   \]
-
-### Impact of Multiple Processes
-
-1. **Multiple Processes**:
-   - If you have 100 processes running, each with its own page table, the memory required multiplies.
-
-2. **Total Memory for All Page Tables**:
+   1,048,576 pages × 4 bytes/page = 4,194,304 bytes ≈ 4 MB
    - For 100 processes, the total memory required is:
-   \[
-   100 \text{ processes} \times 4 \text{ MB/process} = 400 \text{ MB}
-   \]
+     100 processes × 4 MB/process = 400 MB
 
-### Why is This a Problem?
 
-1. **Memory Usage**:
-   - 400MB of memory just to keep track of where things are in memory is a lot.
-   - This is before even considering the actual data and programs that need to be stored.
+### Whats in the Page Table?
+e.g. x86 page table entry (32 bits)
+<img width="887" alt="Screenshot 2024-06-14 at 1 35 12 PM" src="https://github.com/debamitra/debs-notes/assets/2363934/d7c2ebac-7a77-494f-a629-35c5e228b9a4">
 
-2. **Efficiency**:
-   - Managing such large page tables can slow down the system, as more memory and processing power are required to handle these translations.
+
+
+ 
+
+
 
 
 
