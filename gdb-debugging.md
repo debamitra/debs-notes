@@ -1,6 +1,8 @@
 ### Remote debugging
 
-<img width="729" alt="Screenshot 2024-06-24 at 12 53 47 PM" src="https://github.com/debamitra/debs-notes/assets/2363934/9c7deec2-a950-447d-a47c-2e4a06c0adda">
+<img width="715" alt="Screenshot 2024-06-24 at 12 57 17 PM" src="https://github.com/debamitra/debs-notes/assets/2363934/56aaffa4-14c6-4e26-8e86-4bd7aecfe466">
+
+
 
 
 
