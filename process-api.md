@@ -17,7 +17,7 @@
 12. What are interrupts?
 
 13. **What is a file descriptor?**
-    - a non-negative interger that uniquely identifies an opened file or I/O resource within a process
+    - a non-negative integer that uniquely identifies an opened file or I/O resource within a process (this no is basically the index in the table) e.g *fd = 
     - Every process has its own file descriptors table. Each file descriptor entry in the table points to a file handle that represents an open file or I/O resource, e.g., the standard output, a pipe, etc.
     - To think - since file descriptors for all processes point to same stdin, stdout and stderr, what happns when many processes simulteneusly print to stdout. How does it work for stdin? - each terminal or program which starts the process has its own stdin/stdout associated with it. What exactly is stdin/stdout? They are streams, each process has its own set of streams to which it binds to.
       
@@ -55,5 +55,40 @@
     pipefd[0] -> Read end of a pipe
     pipefd[1] -> Write end of a pipe (same as STDOUT_FILENO)
     ```
+
+
+**In xv6 -**
+Structure of a process -
+```c
+
+#define NOFILE 16 // maximum number of open files per process
+struct proc {
+   int pid;
+   int state;
+   char[16] name;
+   void *chan;  
+   struct proc *parent;
+   struct file *ofile[NOFILE]; // Open files - holds the file descriptors table
+   struct trapframe *tf;       // Trap frame for the current syscall
+   struct context *context;    // swtch() here to run process
+   void *kstack;               // Bottom of kernel stack for this process
+   struct inode *cwd;          // Current directory
+   struct vmspace *vmspace;    //  Process address space
+};
+
+// Structure of each file descriptor object
+struct file {
+  enum { FD_NONE, FD_PIPE, FD_INODE, FD_DEVICE } type;
+  int ref;                // reference count
+  char readable;
+  char writable;
+  struct pipe *pipe;      // FD_PIPE
+  struct inode *ip;       // FD_INODE and FD_DEVICE
+  uint off;               // offset
+};
+
+
+
+```
 
 
